@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <title>💐</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      width: 100vw;
+      height: 100vh;
+      background: black;
+      overflow: hidden;
+    }
+
+    video {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      min-width: 100%;
+      min-height: 100%;
+      transform: translate(-50%, -50%);
+      object-fit: cover;
+    }
+
+    .heart {
+      position: absolute;
+      color: rgba(255, 0, 0, 0.6);
+      font-size: 20px;
+      animation: fall linear infinite;
+    }
+
+    @keyframes fall {
+      from {
+        transform: translateY(-10vh);
+      }
+      to {
+        transform: translateY(110vh);
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- VIDEO -->
+  <video autoplay muted loop playsinline>
+    <source src="video.mp4" type="video/mp4">
+  </video>
+
+  <!-- KALP EFEKTİ -->
+  <script>
+    function createHeart() {
+      const heart = document.createElement("div");
+      heart.className = "heart";
+      heart.innerHTML = "❤️";
+      heart.style.left = Math.random() * 100 + "vw";
+      heart.style.animationDuration = (3 + Math.random() * 5) + "s";
+      document.body.appendChild(heart);
+
+      setTimeout(() => {
+        heart.remove();
+      }, 8000);
+    }
+
+    setInterval(createHeart, 300);
+  </script>
+
+</body>
+</html>
